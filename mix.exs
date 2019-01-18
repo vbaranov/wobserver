@@ -79,7 +79,7 @@ defmodule Wobserver.Mixfile do
       {:plug, "~> 1.7"},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.1"},
-      {:credo, "~> 0.7", only: [:dev, :test]},
+      {:credo, "~> 1.0", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.19.1", only: :dev},
       {:excoveralls, "~> 0.6", only: :test},
