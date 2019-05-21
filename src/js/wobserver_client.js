@@ -10,10 +10,14 @@ class WobserverClient {
     this.url = (location.protocol == 'https:' ? 'wss' : 'ws') + '://' + this.host + '/ws'
   }
 
+  wsProtocol() {
+    return location.protocol === 'https:' ? 'wss://' : 'ws://';
+  }
+
   connect(node_change, fallback_callback, connected_callback) {
     this.node_change = node_change;
 
-    this.socket = new WebSocket(this.url);
+    this.socket = new WebSocket(this.wsProtocol() + this.host + '/ws');
 
     this.socket.onerror = (error) => {
       if( this.socket.readyState == 3 ){
@@ -50,7 +54,7 @@ class WobserverClient {
   }
 
   reconnect() {
-    let new_socket = new WebSocket(this.url);
+    let new_socket = new WebSocket(this.wsProtocol() + this.host + '/ws');
 
     new_socket.onerror = (error) => {
       if( this.socket.readyState == 3 ){
