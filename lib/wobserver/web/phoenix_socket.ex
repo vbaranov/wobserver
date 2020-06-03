@@ -14,10 +14,7 @@ defmodule Wobserver.Web.PhoenixSocket do
 
   @doc false
   def child_spec(opts) do
-    %{
-      id: Phoenix.Socket,
-      start: {Phoenix.Socket, :start_link, [opts]}
-    }
+    Phoenix.Socket.__child_spec__(__MODULE__, opts)
   end
 
   @doc false
